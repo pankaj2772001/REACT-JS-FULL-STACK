@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label>Program 1: Select multiple sports: </label>
+    <input type="checkbox" name="sports" value="Soccer" />Soccer
+    <input type="checkbox" name="sports" value="Basketball" />Basketball
+    <input type="checkbox" name="sports" value="Tennis" />Tennis
+    <button id="displaySportsBtn">Display Selected Sports</button>
+    <p id="sportsResult"></p>
+
+    <label>Program 2: Choose multiple vacation destinations: </label>
+    <input type="checkbox" name="destinations" value="Beach" />Beach
+    <input type="checkbox" name="destinations" value="Mountains" />Mountains
+    <input type="checkbox" name="destinations" value="City" />City
+    <button id="displayDestinationsBtn">Display Selected Destinations</button>
+    <p id="destinationsResult"></p>
+
+    <label>Program 3: Select multiple movie genres: </label>
+    <input type="checkbox" name="movies" value="Action" />Action
+    <input type="checkbox" name="movies" value="Comedy" />Comedy
+    <input type="checkbox" name="movies" value="Drama" />Drama
+    <button id="displayMoviesBtn">Display Selected Genres</button>
+    <p id="moviesResult"></p>
+
+    <label>Program 4: Choose multiple items from a restaurant menu: </label>
+    <input type="checkbox" name="menus" value="Burger">Burger
+    <input type="checkbox" name="menus" value="Pizza">Pizza
+    <input type="checkbox" name="menus" value="Salad">Salad
+    <button id="displayItemsBtn">Display Selected items</button>
+    <p id="itemsResult"></p>
+
+    <label>Program 5: Select multiple fruits: </label>
+    <input type="checkbox" name="fruits" value="Apple">Apple
+    <input type="checkbox" name="fruits" value="Banana">Banana
+    <input type="checkbox" name="fruits" value="Orange">Orange
+    <button id="displayFruitsBtn">Display Selected Fruits</button>
+    <p id="fruitsResult"></p>
+
+    <script>
+      const sports = document.getElementsByName("sports");
+      const displaySportsBtn = document.getElementById("displaySportsBtn");
+      const sportsResult = document.getElementById("sportsResult");
+
+      for (let i = 0; i < sports.length; i++) {
+        sports[i].addEventListener("change", function () {
+          let selectedSports = [];
+
+          for (let j = 0; j < sports.length; j++) {
+            if (sports[j].checked) {
+              selectedSports.push(sports[j].value);
+            }
+          }
+
+          console.log(selectedSports);
+
+          displaySportsBtn.addEventListener("click", function () {
+            sportsResult.textContent = `Selected Sports: ${selectedSports.join(
+              ", "
+            )}`;
+          });
+        });
+      }
+
+      const destinations = document.getElementsByName("destinations");
+      const displayDestinationsBtn = document.getElementById(
+        "displayDestinationsBtn"
+      );
+      const destinationsResult = document.getElementById("destinationsResult");
+
+      for (let i = 0; i < destinations.length; i++) {
+        destinations[i].addEventListener("change", function () {
+          let selectedDestinations = [];
+
+          for (let j = 0; j < destinations.length; j++) {
+            if (destinations[j].checked) {
+              selectedDestinations.push(destinations[j].value);
+            }
+          }
+
+          console.log(selectedDestinations);
+
+          displayDestinationsBtn.addEventListener("click", function () {
+            destinationsResult.textContent = `Selected Destinations: ${selectedDestinations.join(
+              ", "
+            )}`;
+          });
+        });
+      }
+
+      const movies = document.getElementsByName("movies");
+      const displayMoviesBtn = document.getElementById("displayMoviesBtn");
+      const moviesResult = document.getElementById("moviesResult");
+
+      for (let i = 0; i < movies.length; i++) {
+        movies[i].addEventListener("change", function () {
+          let selectedMovies = [];
+
+          for (let j = 0; j < movies.length; j++) {
+            if (movies[j].checked) {
+              selectedMovies.push(movies[j].value);
+            }
+          }
+
+          displayMoviesBtn.addEventListener("click", function () {
+            moviesResult.textContent = `Selected Movie Genres: ${selectedMovies.join(
+              ", "
+            )}`;
+          });
+        });
+      }
+
+      const menus = document.getElementsByName("menus")
+      const displayItemsBtn = document.getElementById("displayItemsBtn")
+      const itemsResult = document.getElementById("itemsResult")
+
+      for(let i = 0; i < menus.length; i++){
+        menus[i].addEventListener("change", function(){
+
+          let selectedItems = []
+
+          for(let j = 0; j < menus.length; j++){
+
+            if(menus[j].checked){
+              selectedItems.push(menus[j].value)
+            }
+          }
+
+     
+
+          displayItemsBtn.addEventListener("click", function(){
+
+            itemsResult.textContent = `Selected Menu Items: ${selectedItems.join(", ")}`
+          })
+        })
+      }
+
+      const fruits = document.getElementsByName("fruits")
+      const displayFruitsBtn = document.getElementById("displayFruitsBtn")
+      const fruitsResult = document.getElementById("fruitsResult")
+
+      for(let i = 0; i < fruits.length; i++){
+
+        fruits[i].addEventListener("change", function(){
+
+          let selectedFruits = []
+
+          for(let j = 0; j < fruits.length; j++){
+
+            if(fruits[j].checked){
+              selectedFruits.push(fruits[j].value)
+            }
+          }
+
+          console.log(selectedFruits)
+
+
+          displayFruitsBtn.addEventListener("click", function(){
+
+            fruitsResult.textContent = `Selected Fruits: ${selectedFruits.join(", ")}`
+          })
+        })
+      }
+    </script>
+  </body>
+</html>

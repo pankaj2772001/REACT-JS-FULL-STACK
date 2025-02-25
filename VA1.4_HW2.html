@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="javaScriptInput">What is JavaScript?:</label>
+    <textarea id="javaScriptInput" rows="4" cols="25"></textarea>
+    <button id="displayAnswerBtn">Display Answer</button>
+    <button id="countWordsBtn">Count Words</button>
+    <p id="answerResult"></p>
+
+    <label for="todoTextarea">List Todos:</label>
+    <textarea id="todoTextarea" rows="4" cols="25"></textarea>
+    <button id="displayTodoBtn">Display Todos</button>
+    <button id="countTodoBtn">Count Todos</button>
+    <p id="todosResult"></p>
+
+    <label for="passwordInput">Enter password: </label>
+    <input type="text" id="passwordInput" />
+    <button id="displayPswdBtn">Display Password</button>
+    <button id="checkPswdBtn">Check Password</button>
+    <p id="passwordResult"></p>
+
+    <script>
+      const javaScriptInput = document.querySelector("#javaScriptInput");
+      const displayAnswerBtn = document.querySelector("#displayAnswerBtn");
+      const countWordsBtn = document.querySelector("#countWordsBtn");
+      const answerResult = document.querySelector("#answerResult");
+
+      displayAnswerBtn.addEventListener("click", function () {
+        const jsValue = javaScriptInput.value;
+
+        answerResult.textContent = `Your Answer: ${jsValue}`;
+      });
+
+      countWordsBtn.addEventListener("click", function () {
+        const jsValue = javaScriptInput.value;
+
+        const jsWords = jsValue.split(" ");
+
+        if (jsWords.length <= 7) {
+          answerResult.style.color = "green";
+          answerResult.innerHTML = `Your Answer: ${jsValue} <p>Good.</p>`;
+        } else {
+          answerResult.style.color = "red";
+          answerResult.innerHTML = `Your Answer: ${jsValue} <p>Word count exceeding</p>`;
+        }
+      });
+
+      const todoTextarea = document.querySelector("#todoTextarea");
+      const displayTodoBtn = document.querySelector("#displayTodoBtn");
+      const countTodoBtn = document.querySelector("#countTodoBtn");
+      const todosResult = document.querySelector("#todosResult");
+
+      displayTodoBtn.addEventListener("click", function () {
+        const todo = todoTextarea.value;
+
+        todosResult.textContent = `Your Todos: ${todo}`;
+      });
+
+      countTodoBtn.addEventListener("click", function () {
+        const todoCount = todoTextarea.value.split(", ");
+
+        todosResult.textContent = `Total number of todos: ${todoCount.length}`;
+        todosResult.style.color = "green";
+      });
+
+      const passwordInput = document.querySelector("#passwordInput");
+      const displayPswdBtn = document.querySelector("#displayPswdBtn");
+      const checkPswdBtn = document.querySelector("#checkPswdBtn");
+      const passwordResult = document.querySelector("#passwordResult");
+
+      displayPswdBtn.addEventListener("click", function () {
+        const pswd = passwordInput.value;
+
+        passwordResult.textContent = `Your Password: ${pswd}`;
+        passwordResult.style.color = "black"
+      });
+
+      checkPswdBtn.addEventListener("click", function () {
+        const checkPswd = passwordInput.value;
+        const pswdCount = checkPswd.split("");
+        const indexAt = checkPswd.indexOf("@");
+        const indexExcla = checkPswd.indexOf("!");
+        const indexDollar = checkPswd.indexOf("$");
+
+        if (pswdCount.length >= 5) {
+          if (indexAt >= 0 || indexExcla >= 0 || indexDollar >= 0) {
+            passwordResult.textContent = "Password Accepted";
+            passwordResult.style.color = "green";
+          } else {
+            passwordResult.textContent =
+              "Invalid Password. Password should be more then 5 characters and must contain @ or ! or $ symbol.";
+            passwordResult.style.color = "red";
+          }
+        } else {
+          passwordResult.textContent =
+            "Invalid Password. Password should be more then 5 characters and must contain @ or ! or $ symbol.";
+          passwordResult.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>

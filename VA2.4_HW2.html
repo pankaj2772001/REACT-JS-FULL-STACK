@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="productOrderForm">
+    <h1>Product Order Form</h1>
+
+    <br>
+
+    <label>Product Name:</label>
+    <select id="selectProduct">
+        <option value="Product A">Product A</option>
+        <option value="Product B">Product B</option>
+        <option value="Product C">Product C</option>
+    </select>
+
+    <br><br>
+
+    <label for="selectQuantity">Quantity:</label>
+    <input type="number" value="1" id="selectQuantity">
+
+    <br><br>
+
+    <label for="shippingAddress">Shipping Address:</label><br>
+    <textarea id="shippingAddress" rows="4" cols="50"></textarea>
+
+    <br><br>
+
+    <label>Payment Method:</label><br>
+    <label><input type="radio" name="paymentMethod" value="Credit Card" id="credit-card" >Credit Card</label><br>
+    <label for="paypal"><input type="radio" name="paymentMethod" value="PayPal" id="paypal" >PayPal</label><br>
+    <label for="bank-transfer"><input type="radio" name="paymentMethod" value="Bank Transfer" id="bank-transfer" >Bank Transfer</label>
+
+    <br><br>
+
+    <label>Delivery Speed:</label>
+    <select id="selectDelivery">
+        <option value="Standard">Standard</option>
+        <option value="Express">Express</option>
+        <option value="Same Day">Same Day</option>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Place Order">
+</form>
+
+<div id="productOrderResult"></div>
+
+
+<script>
+
+    const productOrderForm = document.getElementById("productOrderForm")
+
+    productOrderForm.addEventListener("submit", function(event){
+
+        event.preventDefault()
+
+        const selectProduct = document.getElementById("selectProduct").value 
+        const selectQuantity = document.getElementById("selectQuantity").value
+        const shippingAddress = document.getElementById("shippingAddress").value 
+
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value 
+
+        const selectDelivery = document.getElementById("selectDelivery").value 
+
+        const productOrderFormInput = `<h1>Order Details:</h1>
+        <p>Product Name: ${selectProduct} </p>
+        <p>Quantity: ${selectQuantity} </p>
+        <p>Shipping Address: ${shippingAddress}</p>
+        <p>Payment Method: ${paymentMethod}</p>
+        <p>Delivery Speed: ${selectDelivery}</p>`
+
+
+        const divElement = document.getElementById("productOrderResult")
+
+        divElement.innerHTML = productOrderFormInput
+        
+
+    })
+</script>
+</body>
+</html>
